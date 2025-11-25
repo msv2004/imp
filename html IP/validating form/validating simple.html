@@ -1,0 +1,46 @@
+<html> 
+<head> 
+<title>A Simple Form with JavaScript Validation</title> 
+<script type="text/javascript"> 
+ function validate_form ( )  { 
+   const name = document.getElementById("name").value;
+
+   document.getElementById("error").innerText="";
+   let isvalid=true;
+   const nameregex = /^(?=.[a-zA-Z])(?=.\d)[a-zA-Z\d]{8,}$/;
+   
+   if(!nameregex.test(name)){
+      document.getElementById("error").innerText="Name Must Contain 8 letter along with one digit";
+      isvalid=false;
+   }
+
+   if(isvalid){
+      alert("Name Entered Succesfully");
+      document.getElementbyId("name").reset();
+   }
+
+
+   return isvalid;
+           
+} 
+</script> 
+
+<style>
+   #error{
+      color: red;
+   }
+
+
+</style>
+</head> 
+<body bgcolor="#FFFF56"> 
+<form name="contact_form" method="post" id="form" onSubmit="return validate_form(); "> 
+<h1>Please Enter Your Name</h1> 
+<p>Your Name: 
+<input type="text" name="contact_name" id="name"></p> 
+
+<div id="error"></div>
+<p><input type="submit" name="send" value="Send Details"></p> 
+</form>      
+</body>      
+</html>
